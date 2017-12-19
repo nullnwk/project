@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/common.js"></script>
+    <script src="../黑马就业班/10.6/common.js"></script>
+    <!--<script src="js/common2.js"></script>-->
+</head>
+<body>
+    <div class="top_header">
+        <div class="wrapper">
+            <div class="top_header_left fl">
+                <ul>
+                    <li><a href="#">瑞丽网</a></li>
+                    <li><a href="#">瑞丽模特大赛</a></li>
+                    <li><a href="#">瑞丽美容大赏</a></li>
+                    <li><a href="#">男人风尚</a></li>
+                </ul>
+            </div>
+            <div class="top_header_right fr">
+                <ul>
+                    <li><a href="#">登录</a></li>
+                    <li><a href="#">注册</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="header_logo">
+        <div class="wrapper">
+            <img src="images/n17_rayli_logo.png" alt="">
+        </div>
+    </div>
+
+    <div class="header_nav ">
+        <div class="wrapper clearfix">
+            <ul class="clearfix">
+                <li><a href="#">服饰</a></li>
+                <li><a href="#">美容</a></li>
+                <li><a href="#">奢华</a></li>
+                <li><a href="#">靓发</a></li>
+                <li><a href="#">明星</a></li>
+                <li><a href="#">男人</a></li>
+                <li><a href="#">生活</a></li>
+                <li><a href="#">视频</a></li>
+                <li><span></span></li>
+                <li><a href="#">评测</a></li>
+                <li><a href="#">试用</a></li>
+                <li><a href="#">化妆品库</a></li>
+                <li><a href="#">瑞丽之星</a></li>
+                <li><a href="#">论坛</a></li>
+                <li><a href="#">品牌库</a></li>
+                <li><a href="#">聚时尚</a></li>
+            </ul>
+            <div class="search">
+                <div class="search_hide"></div>
+                <!--<input type="text" placeholder="请输入搜索内容" class="search_in">-->
+            </div>
+        </div>
+    </div>
+
+    <div class="phone_code" id="code">
+        <div class="wrapper">
+            <ul>
+                <li>
+                    <a href="">手机瑞丽网</a>
+                    <div>
+                        <img src="images/n17_ma_phone.jpg">
+                    </div>
+                </li>
+                <li>
+                    <a href="">瑞丽美妆APP</a>
+                    <div>
+                        <img src="images/n17_ma_mzapp.jpg">
+                    </div>
+                </li>
+                <li>
+                    <a href="">瑞丽网APP</a>
+                    <div>
+                        <img src="images/n17_ma_rlapp.jpg">
+                    </div>
+                </li>
+                <li>
+                    <a href="">瑞丽官方微信</a>
+                    <div>
+                        <img src="images/n17_ma_rlweixin.jpg">
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script type=text/javascript>
+        var code=my$("code");
+        var a=code.getElementsByTagName("a");
+        for (var i=0;i<a.length;i++){
+            a[i].onmouseover=function(){
+                this.style.font="700 14px '微软雅黑'";
+                this.style.color="#ff3235 ";
+                animation(this.nextElementSibling,{"opacity":1});
+            };
+            a[i].onmouseout=function(){
+                this.style.font="400 14px '微软雅黑'";
+                this.style.color="#1b1b1b";
+                animation(this.nextElementSibling,{"opacity":0});
+            };
+        }
+    </script>
+
+    <div class="box_body_main" id="box">
+        <div class="box_body_main_left" id="screen">
+            <ul>
+                <li><img src="images/0001.jpg"></li>
+                <li><img src="images/0002.jpg"></li>
+                <li><img src="images/0003.jpg"></li>
+                <li><img src="images/0004.jpg"></li>
+                <li><img src="images/0005.jpg"></li>
+                <li><img src="images/0006.jpg"></li>
+                <li><img src="images/0007.jpg"></li>
+                <li><img src="images/0008.jpg"></li>
+                <li><img src="images/0001.jpg"></li>
+            </ul>
+            <ol>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+            <div id="arr">
+                <span id="left"></span>
+                <span id="right"></span>
+            </div>
+        </div>
+
+        <div class="box_body_main_right fr">
+            <img src="images/280-500-911mask.png" class="mask">
+            <img src="images/280-500-911.jpg" width="300" height="500">
+        </div>
+    </div>
+    <script type=text/javascript>
+        var box = my$("box");
+        var screen = box.children[0];
+        var imgWidth = screen.offsetWidth;
+        var ulObj = screen.children[0];
+        var list = ulObj.children;
+        var olObj = screen.children[1];
+        var arr = my$("arr");
+        var left=my$("left");
+        var right=my$("right");
+        var liObj = olObj.getElementsByTagName("li");
+
+        var pic = 0;
+        for (var i = 0; i < liObj.length; i++) {
+            liObj[i].setAttribute("index", i);
+            liObj[i].onmouseover = function(){
+                for (var j = 0; j < olObj.children.length; j++) {
+                    olObj.children[j].removeAttribute("class");
+                }
+                this.className = "current";
+                pic = this.getAttribute("index");
+                animate(ulObj, -pic * imgWidth);
+            };
+        }
+        olObj.children[0].className = "current";
+
+        ulObj.appendChild(ulObj.children[0].cloneNode(true));
+
+        var timeId= setInterval(clickHandle,5000);
+
+        screen.onmouseover = function () {
+            arr.style.display = "block";
+//            animation(left,{"left":"10px"});
+//            animation(right,{"right":"10px"});
+//            clearInterval(timeId);
+        };
+        screen.onmouseout = function () {
+            arr.style.display = "none";
+            timeId= setInterval(clickHandle,5000);
+        };
+        //右边按钮
+        my$("right").onclick =clickHandle;
+        function clickHandle() {
+            if (pic == list.length - 1) {
+                pic = 0;
+                ulObj.style.left = 0 + "px";
+            }
+            pic++;
+            animate(ulObj, -pic * imgWidth);
+            if (pic == list.length - 1) {
+                olObj.children[olObj.children.length - 1].className = "";
+                olObj.children[0].className = "current";
+            } else {
+                for (var i = 0; i < olObj.children.length; i++) {
+                    olObj.children[i].removeAttribute("class");
+                }
+                olObj.children[pic].className = "current";
+            }
+
+        };
+        my$("left").onclick = function () {
+            if (pic == 0) {
+                pic = 8;
+                ulObj.style.left = -pic * imgWidth + "px";
+            }
+            pic--;
+            animate(ulObj, -pic * imgWidth);
+            for (var i = 0; i < olObj.children.length; i++) {
+                olObj.children[i].removeAttribute("class");
+            }
+            olObj.children[pic].className = "current";
+
+        };
+
+
+    </script>
+    <script>
+        var mask=mc$("box_body_main_right")[0].children[0];
+        var main_right=mc$("box_body_main_right")[0];
+        main_right.onmouseover=function(){
+            mask.style.opacity=0.1;
+        };
+        main_right.onmouseout=function(){
+            mask.style.opacity=0;
+        };
+    </script>
+
+    <div class="box_body_second">
+        <div class="sun">
+            <img src="images/sun_mask.png" class="today0">
+            <img src="images/n17_today_line.png" class="today">
+            <img src="images/0011.jpg" class="today1">
+            <img src="images/0012.jpg" class="today1">
+            <img src="images/0013.jpg" class="today1">
+            <ul>
+                <li>
+                    <span id="first"></span>
+                    <span></span>
+                    <span></span>
+                </li>
+            </ul>
+        </div>
+        <div class="trys fr">
+            <div class="try">
+                <h2>抢先试用</h2>
+                <div class="try_content clearfix">
+                    <img src="images/try.jpg" width="130" class="fl">
+                    <div class="detail fr">
+                        <p>膜法世家黑磁网水</p>
+                        <p>润亮肤三合一面...</p>
+                        <div class="temp">
+                            <h5>规格：21片正装</h5>
+                            <h5>数量：20份</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="silly_b">
+                    <div class="rest">剩余<span>7</span>天<span>13</span>小时</div>
+                    <div class="try_out">更多免费试用</div>
+                </div>
+            </div>
+            <div class="yike">
+                <img src="images/0030.jpg" alt="">
+            </div>
+        </div>
+        <div class="focus fr" >
+            <div class="focus_title">
+                <img src="images/n17_tf_tit.png" alt="">
+            </div>
+            <ul>
+                <li><span>01/</span><a href="">热巴一口气买10双运动鞋 半壁衣橱都是基本款</a></li>
+                <li><span>02/</span><a href="">秋风越狠裙摆越飘十一出游雪纺裙的美照攻略！</a></li>
+                <li><span>03/</span><a href="">先别急着收！原来草编包与秋冬更配哦！</a></li>
+                <li><span>04/</span><a href="">想要“攻”气十足？学姚晨张俪来件格纹西装</a></li>
+                <li><span>05/</span><a href="">看完《拜托了冰箱》吃什么都会加点chia seed</a></li>
+                <li><span>06/</span><a href="">护肤新势力：四款当红安瓶精华评测记录</a></li>
+            </ul>
+            <div class="activity">
+                <div class="act fl">
+                    <a href="#">活动精选</a>
+                    <img src="images/0021.jpg" alt="">
+                </div>
+                <div class="hot fr">
+                    <a href="#" >红人专栏</a>
+                    <img src="images/0022.jpg" alt="">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+//        mc$("today1").setAttribute("index1",0);
+//        mc$("today2").setAttribute("index1",1);
+        var sun=mc$("sun")[0];
+        var suns=mc$("today1");
+        var sun_mask=mc$("today0")[0];
+        var suns_b=mc$("sun")[0].getElementsByTagName("span");
+        suns_b[0].style.backgroundColor="#ff3235";
+        var num2= 0;
+        for(var i=0;i<suns_b.length;i++){
+            suns_b[i].setAttribute("index1",i);
+//            suns_b[i].style.backgroundColor="";
+            suns_b[i].onmouseover=function(){
+                if(this.getAttribute("index1")!=num2){
+                    for(var k=0;k<suns_b.length;k++){
+                        suns_b[k].style.backgroundColor="";
+                    }
+                    this.style.backgroundColor="#ff3235";
+                    var num1=this.getAttribute("index1");
+                    for(var j=0;j<suns.length;j++){
+                        suns[j].style.zIndex=0;
+                        suns[j].style.opacity=0.8;
+                        animation(suns[num1],{"opacity":1,"zIndex":10},20);
+                    }
+                    num2=num1;
+                }
+            };
+            suns_b[i].onmouseout=function(){
+//                this.style.backgroundColor="";
+            };
+        }
+        sun.onmouseover=function(){
+            animation(sun_mask,{"opacity":0.1})
+        };
+        sun.onmouseover=function(){
+            animation(sun_mask,{"opacity":0})
+        }
+
+    </script>
+
+    <img src="images/angel.jpg" class="angel">
+
+    <div class="pick_deep">
+        <img src="images/n17_tit_pick.png" class="deep">
+        <ul class="pick_ul">
+            <li><a href="">明星来了</a></li>
+            <li><a href="">“咖”擦壹刻</a></li>
+            <li><a href="">美肌管理课</a></li>
+            <li><a href="">彩妆偶像</a></li>
+            <li><a href="">百人评测团</a></li>
+            <li><a href="">特别企划</a></li>
+        </ul>
+        <div class="pick_show">
+            <div class="pick_show1">
+                <img src="images/star1.jpg">
+                <img src="images/star2.jpg">
+                <img src="images/star3.jpg">
+                <img src="images/star4.jpg">
+            </div>
+            <!--<div class="pick_show2">-->
+                <!--<img src="images/kaca1.jpg">-->
+                <!--<img src="images/kaca2.jpg">-->
+                <!--<img src="images/kaca3.jpg">-->
+                <!--<img src="images/kaca4.jpg">-->
+            <!--</div>-->
+            <!--<div class="pick_show3">-->
+                <!--<img src="images/meiji1.jpg">-->
+                <!--<img src="images/meiji2.jpg">-->
+                <!--<img src="images/meiji3.jpg">-->
+                <!--<img src="images/meiji4.jpg">-->
+            <!--</div>-->
+            <!--<div class="pick_show4">-->
+                <!--<img src="images/caizhuang1.jpg">-->
+                <!--<img src="images/caizhuang2.jpg">-->
+                <!--<img src="images/caizhuang3.jpg">-->
+                <!--<img src="images/caizhuang4.jpg">-->
+            <!--</div>-->
+            <!--<div class="pick_show5">-->
+                <!--<img src="images/bairen1.jpg">-->
+                <!--<img src="images/bairen2.jpg">-->
+                <!--<img src="images/bairen3.jpg">-->
+                <!--<img src="images/bairen4.jpg">-->
+            <!--</div>-->
+            <!--<div class="pick_show6">-->
+                <!--<img src="images/special1.jpg">-->
+                <!--<img src="images/special2.jpg">-->
+                <!--<img src="images/special3.jpg">-->
+                <!--<img src="images/special4.jpg">-->
+            <!--</div>-->
+        </div>
+    </div>
+
+    <div class="clothes ">
+
+        <img src="images/n17_tit_fashion.png" class="fashion">
+        <ul class="clothes_gossip clearfix">
+            <li><a href="#">干净如王丽坤 才好呈现各种美</a></li>
+            <li><a href="#">鞋精杨幂</a></li>
+            <li><a href="#">孙俪偷穿邓超内衣</a></li>
+            <li><a href="#">唐嫣印花裙</a></li>
+            <li><a href="#">豹纹鞋</a></li>
+            <li><a href="#">纽约时装周</a></li>
+        </ul>
+        <div class="more_banner clearfix">
+            <div class="focus_line">
+                <div class="fl ">
+                    <img src="images/focusline1.jpg">
+                    <!--<img src="images/focusline1.jpg">-->
+                    <!--<img src="images/focusline1.jpg">-->
+                </div>
+            </div>
+            <img src="images/36fs.jpg" class="fr">
+        </div>
+        <div class="clothes_list fl clearfix" >
+            <div class="pic clearfix">
+                <img src="images/0031.jpg">
+                <img src="images/0032.jpg">
+                <div class="clothes_list_left fl  clearfix">
+                    <img src="images/0033.jpeg">
+                    <div class="linglong">
+                        <div class="linglong">
+                            <img src="images/linglong.jpg" width="43">
+                            <div class="we-media">
+                                <a href="#" style="font-size: 14px">时尚自媒体人：Bomoda摩登系</a>
+                                <a href="#">原来自拍也可以这么美！</a>
+                            </div>
+                        </div>
+                        <p>查杰朱戬 瑞丽网大片拍摄花絮</p>
+                    </div>
+                </div>
+                <div class="clothes_list_right fr  clearfix">
+                    <img src="images/0034.jpg">
+                    <div>
+                        <p>驼色风衣也有常穿常新的技巧</p>
+                        <p>吴倩 她的少女力有点酷</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="recommand fr clearfix">
+            <div class="scheming">
+                <div class="new">
+                    <img src="images/n17_newcom_tit.png">
+                </div>
+                <ul class="recommand_ul">
+                    <li>&nbsp;&nbsp;<span>01 </span><a href="#">这6件单品穿大不穿小你get了嘛？</a></li>
+                    <li>&nbsp;&nbsp;<span>02 </span><a href="#">穿上戚薇的丝绒阔腿裤气场2米8</a></li>
+                    <li>&nbsp;&nbsp;<span>03 </span><a href="#">时髦心机 黑色蝴蝶结秒变时髦精</a></li>
+                    <li>&nbsp;&nbsp;<span>04 </span><a href="#">杨幂毛衣+牛仔纱裙自带“扶摇式”</a></li>
+                    <li>&nbsp;&nbsp;<span>05 </span><a href="#">刘诗诗的一字领让肩膀再美一个秋</a></li>
+                </ul>
+            </div>
+            <div class="tabs_box">
+                <div class="slides_s">
+                    <ul>
+                        <li>
+                            <a href="#"><img src="images/0041.jpg" ></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="images/0042.jpg" ></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+    </script>
+
+    <div class="beauty clearfix">
+        <div class="beauty_title">
+            <img src="images/n17_tit_beauty.png" alt="">
+        </div>
+        <ul class="clothes_gossip clearfix">
+            <li><a href="#">2017口红排行榜</a></li>
+            <li><a href="#">雪梨怀孕涂口红</a></li>
+            <li><a href="#">赵丽颖蛋卷丸子头</a></li>
+            <li><a href="#">周冬雨暴晒白</a></li>
+            <li><a href="#">大S变胖</a></li>
+            <li><a href="#">薛之谦吞口红</a></li>
+        </ul>
+        <div class="more_banner clearfix">
+            <div class="focus_line">
+                <div class="fl ">
+                    <img src="images/0051.jpg">
+                    <!--<img src="images/0052.jpg">-->
+                    <!--<img src="images/0053.jpg">-->
+                </div>
+            </div>
+            <img src="images/36fs.jpg" class="fr">
+        </div>
+        <div class="box_list_left fl clearfix">
+            <div>
+                <img src="images/0061.jpg">
+            </div>
+            <div class="what_is_new">
+                <div class="what_is_new_img">
+                    <img src="images/n17_newcom_tit.png">
+                </div>
+                <ul>
+                    <li>01&nbsp;&nbsp;五官立体靠眉型 范爷同款丰盈眉</li>
+                    <li>02&nbsp;&nbsp;get杨幂同款柔霜感唇妆 丰唇藏唇纹</li>
+                    <li>03&nbsp;&nbsp;快上车！假期出游收好这份各国免税店</li>
+                    <li>04&nbsp;&nbsp;害怕涂完唇膏“血盆大口”？给你3招</li>
+                    <li>05&nbsp;&nbsp;林依晨冻龄功课做太好纯素颜也嫩成少女</li>
+                </ul>
+            </div>
+            <div class="ma">
+                <img src="images/0062.jpg">
+            </div>
+            <div>
+                <div class="teacher">
+                    <div class="qa_con">
+                        <div class="qa_teacher"><img src="images/0063.jpg"></div>
+                        <div class="qa_teacher_profile">
+                            <div class="qa_tit"><img src="images/n17_qa_tit.png"></div>
+                            <div class="qa_txt">
+                                <p>Q：和王思聪分手后 豆得儿学郑<br/>爽放飞爆痘怎么救</p>
+                                <p>专家：孔星博</p>
+                            </div>
+                            <div class="qa_line"><img src="images/n17_qa_line.png"></div>
+                            <div class="qa_p"></div>
+                            <a href="#">我要提问</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rabbit">
+                <img src="images/0064.jpg">
+            </div>
+            <div class="sun">
+                <img src="images/0065.jpg">
+            </div>
+        </div>
+        <div class="box_list_right fr clearfix">
+            <div class="yangzi">
+                <div>
+                    <ul>
+                        <li><img src="images/0071.jpg"></li>
+                        <!--<li><img src="images/0072.jpg"></li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="ruyizhuan">
+                <div><img src="images/0081.jpg"></div>
+                <!--<div><img src="images/0082.jpg"></div>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="interactive clearfix">
+        <div class="title_img"><img src="images/n17_tit_interactive.png"></div>
+        <div class="evaluating fl">
+            <p>美妆评测</p>
+            <div>
+                <img src="images/0091.jpg">
+            </div>
+            <div class="select_img">
+                <img src="images/evaluating.png" class="fl">
+                <div class="select_img_expert fr">
+                    <div class="center">潮流达人：瑞丽评测中心</div>
+                    <div>Origins悦木之源白紫米萃柔嫩洁颜油评测</div>
+                </div>
+            </div>
+            <div class="select_same">· 对抗初秋敏感-ME自律循环美肌液SE系列</div>
+            <div class="select_same">· 水润保湿不停息 梦妆木槿水源保湿精华露</div>
+        </div>
+        <div class="praise fl">
+            <p>美妆口碑</p>
+            <div>
+                <img src="images/0092.jpg">
+            </div>
+            <div class="select_img">
+                <img src="images/evaluating.png" class="fl">
+                <div class="select_img_expert fr">
+                    <div class="center">潮流达人：猫小喵</div>
+                    <div>雪花秀凝脂玉面膜~“玉”见更好的自己</div>
+                </div>
+            </div>
+            <div class="select_same">· 资生堂百优眼霜，明亮双眸利器</div>
+            <div class="select_same">· 伊蒂之屋珍珠晶透柔润修颜乳</div>
+        </div>
+        <div class="try_out fr">
+            <p>抢先试用</p>
+            <div>
+                <img src="images/0093.jpg">
+            </div>
+            <div class="select_same">雅诗兰黛鲜活亮采能量水<a href="">一键申请</a></div>
+            <div class="select_same">· 资生堂悦薇珀翡塑颜抗皱眼膜<a href="">一键申请</a></div>
+            <div class="select_same">· 珊珂绵润泡沫洁面乳<a href="">一键申请</a></div>
+        </div>
+    </div>
+
+    <div class="new_arrival">
+        <div class="new_arrival_left fl">
+            <div class="new_arrival_left_img"><img src="images/n17_tit_new.png"></div>
+            <div class="new_arrival_list">
+                <div class="new_arrival_slide clearfix">
+                    <div class="fl">
+                        <img src="images/0101.jpg">
+                        <p>零污染纯净“小鲜瓶”！</p>
+                        <p>FANCI肌底液</p>
+                    </div>
+                    <div class="fl" style="margin-left: 62px">
+                        <img src="images/0102.jpg">
+                        <p>初榨山茶花精油好珍贵！</p>
+                        <p style="border:none">丝蓓绮全新滢艳系列</p>
+                    </div>
+                    <div class="fr">
+                        <img src="images/0103.jpg">
+                        <p>肌肤需要奢华感觉</p>
+                        <p style="border:none">香奈儿蓝色肌底精华</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="new_arrival_right fr">
+            <img src="images/360-460.jpg">
+        </div>
+    </div>
+
+    <div class="celebrity">
+        <div><img src="images/n17_tit_celebrity.png"></div>
+        <ul>
+            <li>范冰冰</li>
+            <li>杨幂</li>
+            <li>迪丽热巴</li>
+            <li>周冬雨</li>
+            <li>景甜</li>
+        </ul>
+        <div class="clearfix">
+            <div class="celebrity_banner fl">
+                <div><img src="images/0111.jpg"></div>
+                <!--<div><img src="images/0112.jpg"></div>-->
+                <!--<div><img src="images/0113.jpg"></div>-->
+            </div>
+            <div class="fr">
+                <img src="images/360-1.jpg">
+            </div>
+        </div>
+        <div class="clearfix">
+            <div class="zhangxueying fl">
+                <img src="images/0121.jpg" class="fl">
+                <img src="images/0122.jpg" class="man fr">
+            </div>
+            <div class="tabs_box fr">
+                <div><img src="images/0131.jpg"></div>
+                <div><img src="images/0131.jpg"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="luxury">
+        <div><img src="images/n17_tit_luxury.png"></div>
+        <ul>
+            <li>Dior赵丽颖</li>
+            <li>经典黑色手袋</li>
+            <li>腕表搭配</li>
+            <li>实用大牌</li>
+            <li>穿搭雷区</li>
+            <li>李宇春Gucci</li>
+        </ul>
+        <div class="clearfix">
+            <div class="celebrity_banner fl">
+                <div><img src="images/0141.jpg"></div>
+                <!--<div><img src="images/0142.jpg"></div>-->
+                <!--<div><img src="images/0143.jpg"></div>-->
+            </div>
+            <div class="fr">
+                <img src="images/360x465.jpg">
+            </div>
+        </div>
+    </div>
+
+    <div class="star">
+        <img src="images/n17_tit_star.png">
+        <div class="rayli_star">
+            <p>瑞丽之星</p><a href="">我要加入</a>
+        </div>
+        <div class="star_flex_star">
+            <img src="images/0151.jpg">
+            <img src="images/0152.jpg">
+            <img src="images/0153.jpg">
+            <img src="images/0154.jpg">
+        </div>
+        <p>瑞丽模特</p>
+        <div class="star_flex_model">
+            <div>
+                <img src="images/0161.jpg">
+                <p></p>
+            </div>
+            <div>
+                <img src="images/0162.jpg">
+                <p></p>
+            </div>
+            <div>
+                <img src="images/0163.jpg">
+                <p></p>
+            </div>
+            <div>
+                <img src="images/0164.jpg">
+                <p></p>
+            </div>
+            <div>
+                <img src="images/0165.jpg">
+                <p></p>
+            </div>
+            <div>
+                <img src="images/0166.jpg">
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="life">
+        <div><img src="images/n17_tit_life.png"></div>
+        <ul>
+            <li>爸爸去哪儿5</li>
+            <li>第69届艾美奖</li>
+            <li>日剧不能停</li>
+            <li>维秘是戏精</li>
+            <li>蜘蛛侠的红娘</li>
+            <li>名单公开2017</li>
+        </ul>
+        <div class="clearfix">
+            <div class="celebrity_banner fl">
+                <div><img src="images/0171.jpg"></div>
+                <!--<div><img src="images/0172.jpg"></div>-->
+                <!--<div><img src="images/0173.jpg"></div>-->
+            </div>
+            <div class="fr">
+                <img src="images/360.jpg">
+            </div>
+        </div>
+    </div>
+
+    <div class="magazine">
+        <div><img src="images/n17_tit_magazine.png"></div>
+        <ul class="clearfix">
+            <li>瑞丽服饰美容</li>
+            <li>瑞丽伊人风尚</li>
+            <li>瑞丽家居设计</li>
+            <li>瑞丽时尚先锋</li>
+            <li>男人风尚</li>
+        </ul>
+        <div class="magazine_flex">
+            <div>
+                <img src="images/0181.jpg">
+                <p>《瑞丽服饰美容》</p>
+                <h4>2017年7月号上市</h4>
+            </div>
+            <div>
+                <img src="images/0182.jpg">
+                <p>《瑞丽伊人风尚》</p>
+                <h4>2017年9月号上市</h4>
+            </div>
+            <div>
+                <img src="images/0183.jpg">
+                <p>《瑞丽家居设计》</p>
+                <h4>2017年8月号上市</h4>
+            </div>
+            <div>
+                <img src="images/0184.jpg">
+                <p>《男人风尚》</p>
+                <h4>2017年4月号上市</h4>
+            </div>
+            <div>
+                <img src="images/0185.jpg">
+                <p>《瑞丽时尚先锋》</p>
+                <h4>全面转型新媒体 敬请期待</h4>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mobile">
+        <img src="images/n17_tit_mobile.png">
+        <div class="mobile_smart">
+            <p class="text1">手机瑞丽网</p>
+            <p class="text2">瑞丽网APP</p>
+            <p class="text3">瑞丽美妆APP</p>
+            <div class="app_left" id="move1">
+                <div class="left_1">
+                    <img src="images/0191.jpg">
+                </div>
+                <div class="left_2">
+                    <img src="images/0195.jpg" width="231">
+                </div>
+            </div>
+            <div class="app_middle" id="move2">
+                <div class="middle_1">
+                    <img src="images/0192.jpg">
+                </div>
+                <div class="middle_2">
+                    <img src="images/0194.png" width="285">
+                </div>
+            </div>
+            <div class="app_right" id="move3">
+                <div class="right_1">
+                    <img src="images/0193.jpg">
+                </div>
+                <div class="right_2">
+                    <img src="images/0196.png" width="257">
+                </div>
+            </div>
+            <div class="line"><img src="images/n17_mobile_line.png"></div>
+
+        </div>
+
+
+
+
+
+        <div class="moblie_w clearfix">
+            <div class="mobile_box_left fl">
+                <img src="images/n17_icon_weixin.png" class="mobile_img fl">
+                <div class="sao_left fl">
+                    <h4>瑞丽网官方微信</h4>
+                    <p>扫一扫立即关注官方微信</p>
+                </div>
+                <img src="images/n17_ma_rlweixin.jpg" width="121" class="fl">
+            </div>
+            <div class="mobile_box_right fl">
+                <img src="images/n17_icon_weibo.png" class="mobile_img fl">
+                <div class="sao_right fl">
+                    <h4>瑞丽官方微博</h4>
+                    <p>扫一扫立即关注官方微博</p>
+                </div>
+                <img src="images/n17_weibo_ma.jpg" width="121">
+            </div>
+        </div>
+        <div class="state">
+            <h3>瑞丽动态</h3>
+            <p>· 知名作家贺轻工社60周年</p>
+            <p>· 微视年度大赏 瑞模获奖</p>
+            <p>· 关于冒充我社开展业务声明</p>
+        </div>
+    </div>
+    <script>
+        my$("move1").onmouseover=function(){
+            this.style.zIndex=1000;
+            animation(this,{"bottom":10});
+            animation(this.children[1],{"opacity":1});
+        };
+        my$("move1").onmouseout=function(){
+            this.style.zIndex=100;
+            animation(this,{"bottom":-10});
+            animation(this.children[1],{"opacity":0});
+        };
+        my$("move2").onmouseover=function(){
+            this.style.zIndex=1000;
+            animation(this,{"bottom":10});
+            animation(this.children[1],{"opacity":1});
+        };
+        my$("move2").onmouseout=function(){
+            this.style.zIndex=100;
+            animation(this,{"bottom":-10});
+            animation(this.children[1],{"opacity":0});
+        };
+        my$("move3").onmouseover=function(){
+            this.style.zIndex=1000;
+            animation(this,{"bottom":10});
+            animation(this.children[1],{"opacity":1});
+        };
+        my$("move3").onmouseout=function(){
+            this.style.zIndex=10;
+            animation(this,{"bottom":-10});
+            animation(this.children[1],{"opacity":0});
+        };
+
+    </script>
+
+    <div class="footer">
+        <div class="wrapper">
+            <div class="friend_link">
+                <p>友情链接</p>
+                <p>合作媒体</p>
+                <p>合作伙伴</p>
+                <p>热门链接</p>
+            </div>
+            <div class="friend_link_content">
+                <p>PPTV网络电视</p>
+                <p>新浪时尚</p>
+                <p>搜狐</p>
+                <p>新娘网</p>
+                <p>爱结网</p>
+                <p>爱美网</p>
+                <p>精品购物指南</p>
+                <p>京华网</p>
+                <p>轻工出版社</p>
+                <p>搜狐新娘</p>
+                <p>中国珠宝品牌网</p>
+                <p>凤凰时尚</p>
+                <p>QQ女性</p>
+                <p>网易女人</p>
+                <p>轻奢网</p>
+                <p>女性网址大全</p>
+            </div>
+            <div class="final">
+                <div class="final_left fl">
+                    <h5>关注我们</h5>
+                    <div>
+                        <div class="spirit">
+                            <p class="sina"></p>
+                            <p class="tencent"></p>
+                            <p class="qzone"></p>
+                            <p class="ren"></p>
+                        </div>
+                        <img src="images/86_sl.jpg">
+                    </div>
+                </div>
+                <div class="final_middle fl">
+                    <div class="ad">
+                        <p>广告服务</p>&nbsp;|
+                        <p>联系我们</p>&nbsp;|
+                        <p>法律声明</p>&nbsp;|
+                        <p>隐私声明</p>&nbsp;|
+                        <p>瑞丽招聘</p>&nbsp;|
+                        <p>关于瑞丽</p>&nbsp;|
+                        <p>网站地图</p>
+                    </div>
+                    <div class="law">
+                        <u>京ICP证010512号</u>
+                        <u>电信业务审批[2001]字第651号</u>
+                        <u>广播电视节目制作许可证(京)字第1135号</u>
+                        <u>信息网络传播视听节目许可证0110471</u>
+                        <u>互联网出版许可证 新出网证（京）字 063号</u>
+                        <p>京公网安备11010102000003号</p>
+                        <p>©2001-2014 Rayli.com All Right Reserved 版权所有 不得转载</p>
+                    </div>
+                    <div class="run">
+                        <img src="images/beianlogod2.gif">
+                        <p>经营性网站</p>
+                        <p>备案信息</p>
+                    </div>
+                </div>
+                <div class="final_right fr">
+                    <div>
+                        <p>时尚</p>
+                        <h6>服饰</h6>
+                        <h6>美容</h6>
+                        <h6>奢华</h6>
+                        <h6>靓发</h6>
+                        <h6>新娘</h6>
+                        <h6>视频</h6>
+                    </div>
+                    <div>
+                        <p>生活</p>
+                        <h6>家居</h6>
+                        <h6>享乐</h6>
+                        <h6>星座</h6>
+                        <h6>情感</h6>
+                        <h6>专题</h6>
+                    </div>
+                    <div>
+                        <p>互动</p>
+                        <h6>化妆品库</h6>
+                        <h6>试用</h6>
+                        <h6>享买</h6>
+                        <h6>瑞丽之星</h6>
+                        <h6>论坛</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<script src="js/"></script>-->
+</body>
+</html>

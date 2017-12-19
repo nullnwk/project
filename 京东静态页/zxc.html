@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Student(name) {
+       this.name = name
+    }
+    Student.prototype = {
+        constructor : Student,
+        study:function () {
+            console.log("good good study")
+        }
+    }
+    var stu = new Student("小红");
+    stu.study();
+    var stu1 = new Student("小米");
+    stu1.study();
+
+    var obj = [1,2,3,4];
+    var obj1 = [];
+    for(var k in obj){
+        obj1[k] = obj[k]
+    };
+    obj1.push.call(obj, [1,2,3])
+    console.log(obj1)
+
+
+
+</script>
+
+</body>
+</html>
